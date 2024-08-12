@@ -1,0 +1,298 @@
+/*
+################################################################################
+#     GTK3 Design "Added Elegance" for Linux Mint (21.2) with Mint-Y Style     #
+#                   Copyright(C) 2023, Eric Freiberg                           #
+################################################################################
+*/
+@define-color stylecolor @theme_selected_bg_color; /* linked to the Mint-Y style color */
+@define-color cocolor @theme_text-color;
+@define-color taskbar darker(@theme_bg_color);
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------- FIXED VALUES -------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------------- */
+    @define-color stylecolorB darker(@stylecolor);
+    @define-color modifyerA rgba(96, 96, 96, 0.3);
+    @define-color modifyerB rgba(50, 50, 50, 0.5);
+    @define-color textcolor mix(rgb(180, 180, 180), @cocolor, 0.5);
+    @define-color basecolor grey; /* dark design */
+/* ----------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------ PLEASE NEVER CHANGE THIS! -------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------ WINDOWS ------------------------------------------ */
+/* ------------------------------------------ BUTTONS ------------------------------------------ */
+button:hover:not(.titlebutton) {
+    animation: 1s glowingICONsc infinite alternate, 1s glowing_button2 infinite alternate;
+}
+/* ------------------------------------------ WINDOW TITLEBARS ------------------------------------------ */
+/* ------------------------------------------ WINDOW TITLEBAR BUTTONS ------------------------------------------ */
+/* ------------------------------------------ PANEL & START MENU ------------------------------------------ */
+/* Rounded edges for panel */
+.xfce4-panel.horizontal{
+  color: black;
+  font-family: Ubuntu;
+  border:0;
+  background: linear-gradient(to bottom, mix(rgba(96,96,96, 0.5), @taskbar, 0.2) 0%, mix(rgba(75,75,75, 0.5), @taskbar, 0.2) 50%,rgba(25, 25, 25, 0.6) 51%, black 90%);
+}
+
+/* ------------------------------------------ BUTTONS ------------------------------------------ */
+.xfce4-panel.background button:hover {
+    background: transparent;
+    border-radius: 10px;
+    -gtk-icon-shadow: 0 0 3px @stylecolor;
+    animation: 3s glowingICONsc infinite alternate-reverse;
+}
+
+/* better icons (monochrome) to fit all your favourite colors plus a fully transparent start menu (looks great with compiz blur!!)*/
+#whiskermenu-window * { background: transparent; border-color: transparent; color: alpha(white, 0.7); }
+#whiskermenu-window border {border-color: transparent; border-radius: 15px; min-width: 500px; min-height: 600px; margin-bottom: 0px;}
+
+#whiskermenu-window {
+    color: alpha(white, 0.5);
+    border-top-left-radius: 15px; border-top-right-radius: 15px;
+    box-shadow: inset 0 0 3px 0px black;
+    background: linear-gradient(to bottom, black, rgba(100, 100, 100, 0.8), mix(@stylecolor, alpha(black, 0.8), 0.7),  mix(rgba(96,96,96, 0.3), @taskbar, 0.5));
+}
+
+#whiskermenu-window box {
+    padding: 2px;
+    text-shadow: 0 0 5px black;
+}
+
+#whiskermenu-window  treeview:selected,
+#whiskermenu-window  treeview:hover,
+#whiskermenu-window  treeview:active
+{
+    background: linear-gradient(to bottom, alpha(black, 0.1), alpha(white, 0.2));
+    transition: 5s;
+    border: 1px gray solid;
+    border-radius: 10px;
+}
+
+#whiskermenu-window button {
+    color: white;
+   background: linear-gradient(to bottom, alpha(mix(@stylecolor, black, 0.9), 0.1) 0%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.2) 50%, alpha(mix(black, @modifyerB, 0.5), 0.3) 51%, black 100%);
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-bottom: 1px;
+    margin-left: 10px;
+}
+
+#whiskermenu-window entry {
+    color: alpha(white, 0.7);
+    border-width: 2px;
+    border-style: solid;
+    background: linear-gradient(to bottom, mix(rgba(96,96,96, 0.7), @taskbar, 0.5), mix(@stylecolor, rgba(0,0,0,0.5), 0.7), mix(rgba(96,96,96, 0.5), @taskbar, 0.5));
+    outline: none;
+}
+
+#whiskermenu-window button:hover {
+    animation: 2s glowing_button infinite alternate-reverse;
+}
+
+#whiskermenu-button {
+    margin: 2px;
+    padding: 3px;
+    text-shadow: 2px 2px 5px black, -2px -2px 5px black,
+                 -2px 2px 5px black, 2px -2px 5px black;
+    margin: 5px;
+    -gtk-icon-shadow: 0px 0px 5px grey;
+    background: linear-gradient(to bottom, mix(rgba(96,96,96, 0.5), @taskbar, 0.2) 0%, mix(rgba(75,75,75, 0.5), @taskbar, 0.2) 50%,rgba(25, 25, 25, 0.6) 51%, black 90%);
+    /* background: linear-gradient(to bottom, alpha(mix(@stylecolor, @modifyerA, 0.5), 0.7) 0%, alpha(mix(@stylecolor, @modifyerA, 0.5), 0.7) 50%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 51%, rgba(0,0,0, 0.7) 100%); */
+    min-height: 64px;
+    min-width: 32px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+#whiskermenu-button:hover {
+  animation: 20s glowingSTART infinite alternate;
+}
+
+#whiskermenu-button:checked {
+    background: linear-gradient(to bottom, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 0%, rgba(75,75,75, 0.7) 50%, rgba(50 ,50,50, 0.7) 51%, rgba(0,0,0, 0.7) 100%);
+    box-shadow: 0 0 3px 1px @stylecolor;
+}
+
+#XfcePanelWindowWrapper{
+  color: black;
+  background: linear-gradient(to bottom, mix(rgba(96,96,96, 0.3), @taskbar, 0.5) 0%, mix(rgba(75,75,75, 0.8), @taskbar, 0.5) 50%,rgba(25, 25, 25, 0.9) 51%, black 90%);
+}
+
+.xfce4-panel.background .tasklist button {
+    box-shadow: none;
+    margin: 2px;
+    animation: none;
+    background: linear-gradient(to bottom, rgba(150,150,150, 0.7) 0%, rgba(150,150,150, 0.7) 50%, rgba(50 ,50,50, 0.7) 51%, rgba(0,0,0, 0.7) 100%);
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    /* enhance readability by setting a fixed text color and add a shadow to it */
+    text-shadow: 2px 2px 5px black, -2px -2px 5px black,
+                 -2px 2px 5px black, 2px -2px 5px black;
+    color: @textcolor;
+    -gtk-icon-shadow: none;
+}
+
+.xfce4-panel.background .tasklist button:checked, .xfce4-panel.background .tasklist button:active {
+    -gtk-icon-shadow: none;
+    background: linear-gradient(to bottom, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.2) 0%, alpha(mix(@stylecolor, @modifyerB, 0.2), 0.7) 50%, alpha(mix(@stylecolorB, @modifyerB, 0.5), 0.7) 51%, black 100%);
+    font-style: italic;
+}
+
+.xfce4-panel.background .tasklist button:hover {
+    animation: 2s glowing infinite alternate;
+    -gtk-icon-shadow: none;
+}
+
+.xfce4-panel.background .tasklist button:hover:not(:checked):not(:active) {
+    animation: 2s glowing_button infinite alternate;
+}
+
+/* ------------------------------------------ ANIMATIONS ------------------------------------------ */
+@keyframes glowing {
+    0%  {
+        box-shadow: none;        
+    }
+    100% {
+        box-shadow: 0 0 5px 1px @stylecolor;
+    }
+}
+
+@keyframes glowing_button {
+    0%  { /* darker */
+        box-shadow: none;
+        background: linear-gradient(to bottom, alpha(mix(@stylecolor, @modifyerA, 0.5), 0.7) 0%, alpha(mix(@stylecolor, @modifyerA, 0.5), 0.7) 50%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 51%, rgba(0,0,0, 0.7) 100%);
+    }
+    100% { /* brighter */
+        box-shadow: 0 0 5px 1px @stylecolor;
+        background: alpha(white, 0.5), linear-gradient(to bottom, alpha(mix(@stylecolor, @modifyerA, 0.5), 0.7) 0%, alpha(mix(@stylecolor, @modifyerA, 0.5), 0.7) 50%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 51%, rgba(0,0,0, 0.7) 100%);
+    }
+}
+
+@keyframes glowing_button2 {
+    0%  { /* default */
+    }
+    100% { /* brighter */
+        box-shadow: 0 0 5px 1px @stylecolor;
+        background: alpha(white, 0.5), linear-gradient(to bottom, transparent 0%, transparent 50%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.3) 51%, alpha(@stylecolor, 0.3) 100%);
+    }
+}
+
+
+@keyframes glowingICON {
+    0%  {
+        -gtk-icon-shadow: none;
+    }
+    100% {
+       -gtk-icon-shadow: 0 0 5px white;
+    }
+}
+
+@keyframes glowingICONcc {
+    0%  {
+        -gtk-icon-shadow: none;
+    }
+    100% {
+       -gtk-icon-shadow: 0 0 5px @cocolor;
+    }
+}
+
+@keyframes glowingICONsc {
+    0%  {
+        -gtk-icon-shadow: none;
+    }
+    100% {
+       -gtk-icon-shadow: 0 0 5px @stylecolor;
+    }
+}
+
+@define-color color1 white;
+@define-color color2 red;
+@define-color color3 green;
+@define-color color4 blue;
+@define-color color5 yellow;
+@define-color color6 pink;
+@define-color color7 violet;
+
+@keyframes glowingSTART {
+    /* OUTSIDE GLOW */
+    0%  {
+        box-shadow: 0 0 1px 1px @stylecolor,
+                    0 0 2px 1px yellow, 0 2px 2px 1px blue, 2px 0px 2px 1px green, 2px 2px 2px 1px red;
+    }
+    5% {
+        box-shadow: 0 0 2px 1px red, 0 2px 2px 1px green, 2px 0px 2px 1px blue, 2px 2px 2px 1px yellow;
+    }
+    25% {
+        box-shadow: 0 0 2px 1px yellow, 0 2px 2px 1px blue, 2px 0px 2px 1px green, 2px 2px 2px 1px red,
+                    2px 2px 1px 1px @stylecolor;
+    }
+    50% {
+        box-shadow: 0 0 2px 1px red, 0 2px 2px 1px green, 2px 0px 2px 1px blue, 2px 2px 2px 1px yellow;
+    }
+    75% {
+        box-shadow: 0 0 2px 1px yellow, 0 2px 2px 1px blue, 2px 0px 2px 1px green, 2px 2px 2px 1px red,
+                    2px 2px 1px 1px @stylecolor;
+    }
+    100% {
+        box-shadow: 0 0 2px 1px red, 0 2px 2px 1px green, 2px 0px 2px 1px blue, 2px 2px 2px 1px yellow;
+    }
+
+    /* RAINBOW EFFECT WITHIN THE BUTTON */
+    0%  {
+        background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(75, 75, 75, 0.9) 51%, black 100%),
+                    alpha(white, 0.9),
+                    linear-gradient(0deg, alpha(mix(@color1, @modifyerA, 0.5), 0.5) 0%, alpha(mix(@color7, @modifyerB, 0.5), 0.5) 33%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%), 
+                    linear-gradient(60deg, alpha(mix(@color2, @modifyerA, 0.5), 0.5) 0%, alpha(mix(@color6, @modifyerB, 0.5), 0.5) 33%, alpha(mix(@cocolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%);
+    }
+    16% {
+        background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(75, 75, 75, 0.9) 51%, black 100%),
+                    alpha(white, 0.9),
+                    linear-gradient(60deg, alpha(mix(@color2, @modifyerA, 0.5), 0.5) 0%, alpha(mix(@color6, @modifyerB, 0.5), 0.5) 33%, alpha(mix(@cocolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%),
+                    linear-gradient(120deg, alpha(mix(@color3, @modifyerA, 0.5), 0.5) 0%, alpha(mix(@color5, @modifyerB, 0.5), 0.5) 33%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%);
+        -gtk-icon-shadow: 0 0 3px grey;
+    }
+    32% {
+        background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(75, 75, 75, 0.9) 51%, black 100%),
+                    alpha(white, 0.5),
+                    linear-gradient(120deg, alpha(mix(@color3, @modifyerA, 0.5), 0.5) 0%, alpha(mix(@color5, @modifyerB, 0.5), 0.5) 33%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%),
+                    linear-gradient(180deg, alpha(mix(@color4, @modifyerA, 0.5), 0.5) 0%, alpha(mix(@color4, @modifyerB, 0.5), 0.5) 33%, alpha(mix(@cocolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%);
+       -gtk-icon-shadow: 0 0 4px grey;
+    }
+    48% {
+        background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(75, 75, 75, 0.9) 51%, black 100%),
+                    alpha(white, 0.5),
+                    linear-gradient(180deg, alpha(mix(@color4, @modifyerA, 0.5), 0.5) 0%, alpha(mix(@color4, @modifyerB, 0.5), 0.5) 33%, alpha(mix(@cocolor, @modifyerB, 0.5), 0.5) 66%, rgba(0,0,0, 0.7) 100%), 
+                    linear-gradient(240deg, alpha(mix(@color5, @modifyerA, 0.5), 0.5) 0%, alpha(mix(@color3, @modifyerB, 0.5), 0.5) 33%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.5) 66%, rgba(0,0,0, 0.7) 100%);
+       -gtk-icon-shadow: 0 0 5px white;
+    }
+    64% {
+        background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(75, 75, 75, 0.9) 51%, black 100%),
+                    alpha(white, 0.5),
+                    linear-gradient(240deg, alpha(mix(@color5, @modifyerA, 0.5), 0.7) 0%, alpha(mix(@color3, @modifyerB, 0.5), 0.7) 33%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%),
+                    linear-gradient(300deg, alpha(mix(@color6, @modifyerA, 0.5), 0.7) 0%, alpha(mix(@color2, @modifyerB, 0.5), 0.7) 33%, alpha(mix(@cocolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%);
+       -gtk-icon-shadow: 0 0 4px grey;
+    }
+
+    80% {
+        background: linear-gradient(to bottom, transparent 0%, transparent 50%, alpha(mix(@stylecolorB, @modifyerB, 0.5), 0.9) 51%, black 100%),
+                    alpha(white, 0.5),
+                    linear-gradient(300deg, alpha(mix(@color6, @modifyerA, 0.3), 0.7) 0%, alpha(mix(@color2, @modifyerB, 0.5), 0.7) 33%, alpha(mix(@cocolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%),
+                    linear-gradient(360deg, alpha(mix(@color7, @modifyerA, 0.5), 0.7) 0%, alpha(mix(@color1, @modifyerB, 0.5), 0.7) 33%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%);
+       -gtk-icon-shadow: 0 0 3px grey;
+    }
+
+    96% {
+        background: linear-gradient(to bottom, transparent 0%, transparent 50%, alpha(mix(@stylecolorB, @modifyerB, 0.5), 0.9) 51%, black 100%),
+                    alpha(white, 0.5),
+                    linear-gradient(360deg, alpha(mix(@color7, @modifyerA, 0.3), 0.7) 0%, alpha(mix(@color1, @modifyerB, 0.5), 0.7) 33%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%),
+                    linear-gradient(0deg, alpha(mix(@color1, @modifyerA, 0.5), 0.7) 0%, alpha(mix(@color7, @modifyerB, 0.5), 0.7) 33%, alpha(mix(@stylecolor, @modifyerB, 0.5), 0.7) 66%, rgba(0,0,0, 0.7) 100%);    
+    }
+}
